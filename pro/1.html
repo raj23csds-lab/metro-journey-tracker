@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Namma Metro Assistant 🚇</title>
+     <link rel="stylesheet" href="1.css">
+</head>
+    <body>
+    <h1 id="mainTitle">🚇 Namma Metro Assistant</h1>
+    <div class="container">
+        <label for="source">Source Station:</label>
+        <select id="source"></select>
+        <label for="destination">Destination Station:</label>
+        <select id="destination"></select>
+        <label for="time">Enter Time (HH:MM):</label>
+        <input type="time" id="time" />
+        <button onclick="showRoute()">Find Route</button>
+        <div id="output" class="output"></div>
+
+        <h3 id="h3-tracker">Journey Tracker</h3>
+        <div id="tracker" class="tracker">🚉 Select route to start tracking...</div>
+
+        <h3 id="h3-places">Nearby Places</h3>
+        <div class="filter-btns" id="filterBtns"></div>
+        <div class="places-wrap" id="places"></div>
+
+    </div>
+
+      <h2 id="h2-emergency">Emergency Contacts</h3>
+<button onclick="showEmergencyContacts()" style="width:100%;background:#d32f2f;color:white;">🚨 Emergency Helpline</button>
+<div id="emergencyBox">
+  <button class="close-btn" onclick="hideEmergencyContacts()">✖</button>
+  <h4>Emergency Contacts</h4>
+  <p>🚓 Metro Security: <b>1800-123-4567</b></p>
+  <p>🚑 Medical Help: <b>108</b></p>
+  <p>🔥 Fire Service: <b>101</b></p>
+  <p>📞 Women Helpline: <b>1091</b></p>
+</div>
+
+    <!-- Packing Section -->
+    <section id="packingAlert">
+      <h2>🎒 Pre-Travel Check</h2>
+      <p>Have you packed your mobile, charger, wallet, water, and metro card?</p>
+      <div class="btn-group">
+        <button onclick="acknowledgePacking(true)" class="yes">✅ Yes, Ready!</button>
+        <button onclick="acknowledgePacking(false)" class="no">⚠️ Oops, Not Yet</button>
+      </div>
+      <p id="packingResponse"></p>
+    </section>
+
+ <!---music -->
+     <section id="music">
+      <h2>🎧 Commute Playlist</h2>
+      <p>Choose your mood:</p>
+      <div class="btn-group">
+        <button onclick="showPlaylist('spotify')">🎶 Spotify Playlist</button>
+      </div>
+      <div id="player"></div>
+    </section>
+  
+  <footer>
+    <p>&copy; 2025 Metro Assistant | Be Safe. Travel Smart. 💙</p>
+  </footer>
+
+    <script src="1.js"></script>
+</body>
+</html>

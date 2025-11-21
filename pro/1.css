@@ -1,0 +1,239 @@
+ body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(115deg,#e9e9f7 0%,#c4d3f6 100%);
+            margin: 0; padding: 20px;
+        }
+        h1 { text-align: center; color: #21409a; letter-spacing: 1px;}
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: #fff;
+            padding: 24px;
+            border-radius: 18px;
+            box-shadow: 0 2px 18px rgba(41,71,169,0.13);
+        }
+        label {font-weight: 500; color: #333;}
+        select, input[type=time] {
+            display: block; width: 100%; margin-bottom: 16px; padding: 8px; border-radius: 8px;
+            border: 1.5px solid #c4d3f6; font-size: 16px;
+        }
+        button {
+            width: 100%;
+            margin-bottom: 12px; padding: 12px; border: none; border-radius: 8px;
+            background: linear-gradient(90deg,#21409a,#235aaf 95%);
+            color: #fff; font-size: 16px; font-weight: 600; letter-spacing: 1px; cursor: pointer;
+        }
+        button:hover { background: linear-gradient(90deg,#235aaf,#21409a 95%);}
+        .output {
+            margin-top: 20px; padding: 18px 14px 12px 14px;
+            background: #f6f9ff; border-radius: 12px; border-left: 6px solid #21409a;
+            box-shadow: 0 0 8px 0 #eef5fb; min-height:50px;
+        }
+        .route-card { margin:0 0 16px 0; background:#ffffff; border-radius:14px; border:1.5px solid #cad6f9; padding:16px; box-shadow:0 2px 6px 0 #edf4fe;}
+        .badge { display: inline-block; border-radius: 9px; padding: 3px 13px; font-size: 14px; margin-left: 6px;}
+        .badge.ok { background: #a8f2b6; color: #145526;}
+        .badge.inter { background: #ffecc1; color: #7e5702; border: 1px solid #ffe373;}
+        .badge.none { background: #f8d2d2; color: #991a1a;}
+        h3 {margin-top:30px; margin-bottom:12px; color:#21409a;}
+        .places-wrap { max-height:220px; overflow-y:auto;}
+        .place {
+            padding: 14px 10px; margin: 6px 0; background: #f8fbfe;
+            border-left: 4.5px solid #21409a; border-radius: 8px;
+            box-shadow: 0 0 6px 0 #e7ebfc;
+            transition: box-shadow .2s;
+        }
+        .place:hover { box-shadow: 0 4px 12px 0 #e4ecfd;}
+        .filter-btns {margin:8px 0 4px 0;}
+        .filter-btns button {
+            display: inline-block; padding: 7px 13px; border-radius: 18px; background: #e5eafd; color: #21409a;
+            border: none; font-size:14px; margin:0 7px 7px 0; cursor:pointer; font-weight:500; transition: background .2s;
+            width: auto;
+        }
+        .filter-btns button.active, .filter-btns button:hover {background: #21409a; color: #fff;}
+        .tracker {
+            background: #f6faff;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: 1.5px solid #cad6f9;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .station-step {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            font-size: 15px;
+        }
+        .dot {
+            width: 12px; height: 12px; border-radius: 50%;
+            background: #c5c5c5; margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .dot.active { background: #21409a; box-shadow: 0 0 6px #21409a; }
+        .line-indicator {
+            font-size: 11px;
+            color: #666;
+            margin-left: 5px;
+            font-weight: 500;
+        }
+        
+        /* --- Share Notification CSS --- */
+        .share-notification {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #28a745; 
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: bottom 0.3s ease;
+            z-index: 1000;
+            font-weight: 500;
+            font-family: sans-serif;
+        }
+        .share-notification.show {
+            bottom: 30px;
+        }
+
+        /* --- Language Toggle CSS --- */
+        #langToggle { transition: all 0.3s ease; }
+        #langToggle:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(33,64,154,0.4); }
+        #langToggle:active { transform: translateY(0); }
+        @media (max-width: 768px) {
+            #langToggle { top: 10px; right: 10px; padding: 8px 16px; font-size: 13px; }
+        }
+        
+        /* --- Walking Directions CSS --- */
+        #walkingDirectionsModal { animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .walking-btn:hover { background: #fb8c00 !important; transform: translateY(-1px); box-shadow: 0 2px 8px rgba(255,167,38,0.4); }
+    
+        body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  background: #f4f6fc;
+  color: #222;
+}
+header {
+  background: #21409a;
+  color: #fff;
+  padding: 1em 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+h1 {
+  margin: 0;
+  letter-spacing: 1px;
+  font-size: 1.5em;
+}
+#emergencyBox {
+    display:none;
+    background:#fff;
+    padding:15px;
+    margin-top:10px;
+    border-radius:8px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.2);
+  }
+
+/* Modal styles */
+.modal {
+  position: fixed;
+  z-index: 15;
+  left: 0; top: 0; right: 0; bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(60,70,130,0.25);
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+}
+.modal-content {
+  background: #fff;
+  padding: 2em 2.5em 1.5em 2.5em;
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(60,70,130,0.15);
+  max-width: 360px;
+  position: relative;
+  text-align: left;
+}
+.close {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  font-size: 1.2em;
+  color: #666;
+  cursor: pointer;
+}
+.report-btn {
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6em 1.5em;
+  margin-top: 1em;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background .2s;
+}
+.report-btn:hover {
+  background: #e06800;
+}
+main {
+  max-width: 600px;
+  margin: 2.5em auto 2em auto;
+  background: #fff;
+  padding: 2em 2em 1.5em 2em;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px #e0e6f6;
+}
+section {
+  margin-bottom: 2em;
+}
+h2 {
+  color: #21409a;
+  margin-top: 0;
+}
+button {
+  margin-right: 1em;
+  margin-bottom: 1em;
+  padding: 0.55em 1.3em;
+  font-size: 1em;
+  border-radius: 6px;
+  border: none;
+  background: #235aaf;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .2s;
+}
+button:hover { background: #21409a;}
+#player {
+  margin-top: 1em;
+  max-width: 100%;
+}
+footer {
+  background: #e6e9f7;
+  text-align: center;
+  padding: 1.3em 0 0.3em 0;
+  font-size: 0.97em;
+  border-radius: 0 0 12px 12px;
+  color: #344;
+}
+ul {
+  padding-left: 1.25em;
+}
+ul li {
+  margin-bottom: 0.6em;
+}
+a {
+  color: #235aaf;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
